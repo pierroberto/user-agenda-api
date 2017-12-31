@@ -30,6 +30,12 @@ function delUser(req, res) {
     });
 }
 
+function addUser(req, res) {
+  const data = req.body;
+  console.log("hello", req.body);
+  return;
+}
+
 function getUser(req, res) {
   User.findOne({
     where: {
@@ -49,5 +55,6 @@ function getUser(req, res) {
 module.exports = {
   getAllUsers: getAllUsers,
   getUser: getUser,
-  delUser: delUser
+  delUser: delUser,
+  addUser: addUser
 };

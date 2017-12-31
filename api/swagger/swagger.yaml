@@ -36,6 +36,22 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /adduser:
+    x-swagger-router-controller: user
+    post:
+      parameters:
+        - in: body
+          name: user
+          description: The user to create.
+          schema:
+            type: object
+      operationId: addUser
+      responses:
+        "200":
+          description: Created
+        default:
+          description: Error
+
   /deluser/{id}:
     x-swagger-router-controller: user
     parameters:
