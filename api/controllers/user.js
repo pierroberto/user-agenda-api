@@ -31,9 +31,18 @@ function delUser(req, res) {
 }
 
 function addUser(req, res) {
-  const data = req.body;
-  console.log("hello", req.body);
-  return;
+  console.log("request =====", req.body);
+  User.findOne({ where: req.body.id }).then(user => {
+    console.log("USER------", user);
+    if (!user) {
+      console.log("NEW USER===========");
+      const data = User.build(req.body)
+        .save()
+        .then(res => console.log("-----DONE------", res));
+    } else {
+      user.update(req.body);
+    }
+  });
 }
 
 function getUser(req, res) {
